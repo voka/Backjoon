@@ -4,7 +4,7 @@
 /* 
 처음에 무턱대고 map을 사용했다가 sorting할때 자꾸 에러가 나서 찾아보니 ordered std라 특정조건으로
 sorting 하려면 vector나 deque로 바꿔야한다는 것을 몰랐다.   시간이 많이 걸려버렸다.. ㅜㅜ 
-
+https://www.acmicpc.net/problem/20920
  */
 
 using namespace std;
@@ -32,6 +32,7 @@ int main(void){
     
     cin.tie(NULL);
     ios::sync_with_stdio(false);
+
 
     int N,M;
     map<string,int> Dtemp;
