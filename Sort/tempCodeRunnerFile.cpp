@@ -1,0 +1,2 @@
+
+        cin>>Array[i];
