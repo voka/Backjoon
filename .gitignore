@@ -1,2 +1,4 @@
 ## NESOY Ignore File ##
 *.json
+*.exe
+*.txt
