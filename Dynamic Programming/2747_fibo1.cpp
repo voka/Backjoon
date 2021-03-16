@@ -1,8 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// 포도주 시식
-// https://www.acmicpc.net/problem/2156
+// 피보나치수 1
+// https://www.acmicpc.net/problem/2747
+
+deque<int> fibo(10001);
+
 void printArray(deque<int> a){
     for(auto i = a.begin();i!=a.end();++i){
         cout<<*i<<", ";
@@ -13,16 +16,13 @@ void solve(){
     int N,num;
 
     cin>>N; 
-    int t;
-    deque<int> dp(N+1),temp(N+1);
-    for(int i=1,j=1;i<=N;++i){
-        cin>>t;
-        temp[i] = t;
+    fibo[0] = 0;
+    fibo[1] = 1;
+    fibo[2] = 1;
+    for(int i=3;i<=N;++i){
+        fibo[i] = fibo[i-1] + fibo[i-2];
     }
-    dp[1] = temp[1];
-
-    //printArray(dp);
-    printf("%d",dp[N]);
+    cout<<fibo[N]<<"\n";
     
 }
 
