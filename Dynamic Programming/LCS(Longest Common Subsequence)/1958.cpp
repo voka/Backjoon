@@ -25,8 +25,8 @@ void find_LCS(string a, string b,string c){
                     dp[i][j][k] = dp[i-1][j-1][k-1]+1;
                 else{
                     int ij = max(dp[i-1][j][k],max(dp[i-1][j-1][k],dp[i][j-1][k]));
-                    int ik = max(dp[i-1][j][k-1],max(dp[i-1][j][k],dp[i][j][k-1]));
-                    int jk = max(dp[i][j-1][k],dp[i-1][j-1][k-1]);
+                    int ik = max(dp[i-1][j][k-1],dp[i-1][j][k]);
+                    int jk = max(dp[i][j-1][k],dp[i][j][k-1]);
                     dp[i][j][k] = max(ij,max(ik,jk));
                 }
             }
