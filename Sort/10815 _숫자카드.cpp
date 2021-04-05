@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// https://www.acmicpc.net/problem/100815 숫자카드
+// https://www.acmicpc.net/problem/10815 숫자카드
 
 struct Point
 {
