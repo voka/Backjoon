@@ -2,7 +2,7 @@
 using namespace std;
 
 #define Loop(i,n) for(int i=1;i<=n;++i)
-int dp[1001][1001] = {0,};
+int dp[7001][7001] = {0,};
 
 void printArr(int n,int m){
     Loop(i,n+1){
