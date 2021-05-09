@@ -20,6 +20,7 @@ void printdeque(deque<deque<Type>> check){// 출력
 stack<location> reg;
 template <typename T1,typename T2>
 void execute(deque<deque<T1>> &check, deque<deque<T2>> &maps, int i, int j,int* r){
+    if(i == N )
     if(check[i][j] == true){//자기 자신이 true
         check[i][j] = false;
         maps[i][j] += 1;
