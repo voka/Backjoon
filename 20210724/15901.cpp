@@ -1,93 +1,135 @@
-#include<list>
+#include<deque>
+#include<set>
+#include<map>
 #include<iostream>
 #include<vector>
 using namespace std;
+typedef long long int lli;
+typedef pair<long long int, long long int> pll;
 
+set<pll> con;
+deque<pll> wait;
+
+
+void burn(){
+    lli L,R;
+    cin>>L>>R;
+    pll f  = make_pair(L,0);
+    pll s  = make_pair(R,0);
+    auto it1 = lower_bound(con.begin(),con.end(),f);
+    auto it2 = lower_bound(con.begin(),con.end(),s);
+    /* if(it1 == it2){
+        
+    }
+    else{
+        
+    } */
+    cout<<(it1 == con.end())<<",  "<<it1->first<<", "<<it1->second<<'\n';
+    cout<<(it2 == con.end())<<",  "<<it2->first<<", "<<it2->second<<'\n';
+}
+
+void find_i(){
+    int i;
+    cin>>i;
+    i = i - 1;
+    for(auto a:con){
+        cout<<a.first<<", "<<a.second<<" ";
+        if(i-- < 0 ) break;
+    }
+}
 void solve(){
     int N,M,K,Q,act;
     int Answer = 0;
-    list<int> con;
-    list<int> wait;
     cin>>N>>M>>K>>Q;
+    int counts = 0,pre = 0;
+    int id = 0;
     for(int i=0;i<N;++i){
         int x;
         cin>>x;
-        if(i < M) con.push_back(x);
-        else wait.push_back(x);
+        if(i < M) {
+            if(pre == x){
+                if(i == M - 1||i - counts + 1 == 0){
+                    con.insert(make_pair(i - counts + 1,counts));
+                    counts = 1;
+                }
+                counts++;
+            }
+            else{
+                con.insert(make_pair(i - counts + 1,counts));
+                counts = 1;
+            }
+        }
+        else {
+            if(pre == x){
+                counts++;
+                 if(i == N - 1) wait.push_back(make_pair(x,counts));
+            }
+            else{
+                wait.push_back(make_pair(x,counts));
+                counts = 1;
+            }
+        }
+        pre = x;
     }
     for(int i=0;i<Q;++i){
-
-        /*  cout<<"con  === ";
-        for(auto a:con){
-            cout<<a<<" ";
-        }
-        cout << "\n"; */
-
-        /* cout<<"wait  === ";
-        for(auto a:wait){
-            cout<<a<<" ";
-        }
-        cout << "\n"; */
         int command;
         cin>>command;
-        auto cs = con.begin();
-        auto ws = wait.begin();
-        auto we = wait.end();
         switch (command)
         {
         case 1:
-            int L,R,plus;
-            cin>>L>>R;
-            L -= 1;
-            R -= 1;
-            plus = R - L + 1;
-            R = plus;
-            while(L--) cs++; // L 지점까지 이동
-            while(1){ // R - L +1개 만큼 원소 삭제
-                if(R <= 0) break;
-                R--;
-                con.erase(cs++);
-            }
-            while(plus--){
-                if(wait.size() == 0){
-                    con.insert(cs,0);
-                }
-                else{
-                    int t = *wait.begin();
-                    con.insert(cs,t);
-                    wait.pop_front();
-                }
-            } 
+            burn();
             break;
-        
         case 2:
-            int i;
-            cin>>i;
-            i = i - 1;
-            while(i--) cs++;
-            cout<<*cs<<" ";
+            find_i();
             break;
 
         case 3:
             int p,q;
             cin>>p>>q;
-            while(q--) wait.insert(we,p);
+            wait.push_back(make_pair(p,q));
             break;
 
         case 4:
-            int t;
+            lli  t;
             cin>>t;
-            while(t--) wait.pop_front();
+            while(1){
+                lli k = wait.front().second;
+                if( t - k > 0){
+                    t = t - k;
+                    wait.pop_front();
+                }
+                else if (t - k == 0)
+                {
+                    t = t - k;
+                    wait.pop_front();
+                    break;
+                }
+                else{
+                    k = k - t;
+                    wait.front().second = k;
+                    break;
+                }
+            }
             break;
+            
         default:
+
             break;
         }
+
+         cout<<"con == \n";
+           for(auto a:con){
+                cout<<a.first<<", "<<a.second<<" ";
+            }
+            cout << "\n";
+            cout<<"wait == \n";
+           for(auto a:wait){
+                cout<<a.first<<", "<<a.second<<" ";
+            }
+            cout << "\n";
        
     }
-    for(auto a:con){
-        cout<<a<<" ";
-    }
-    cout << "\n";
+    
 
 }
 
