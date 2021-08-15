@@ -14,7 +14,25 @@ vector<vector<int>> dis(101,vector<int>(101));
 
 int INF = 1000000000;
 
+/* 
+좌표변환 하는 법  2D -> 1D
+    M X N 행렬일 배열일 경우(인덱스 1부터 시작한다고 가정)
+    
+    Container
+    iD = dis[M*N + 1]
+    2D = maps[M+1][N+1];
+ 
+    2D : x, y
+    1D : (x-1)*M + y
 
+    for(int i=1;i<=M;++i){
+        for(int j=1;j<=N;++j){
+            dis[(i-1)*M + j] = maps[i][j];
+        }
+    }
+
+
+ */
 
 void dijkstra(){
     for(int i=1;i<=M;++i){
