@@ -1,32 +1,19 @@
-#include <string>
 #include <vector>
-#include <iostream>
+#include <math.h>
 #include <algorithm>
 using namespace std;
 
-int mul_3(int a){
-    return a * 3;
-}
 int solution(int n) {
-    vector<int> threes;
     vector<int> ans;
-    int f = 1,i = 0;
-    while(f <= n){
-        threes.push_back(f);
-        f =  mul_3(f);
-        ans.push_back(0);
+    while(n>0){
+        ans.push_back(n%3);
+        n = n/3;
     }
-    reverse(threes.begin(),threes.end());
-    while(n>=0 && i < ans.size()){
-        if(threes[i] <= n){
-            n -= threes[i];
-            ans[i] += 1;
-        }else i++;
-    }
+    int answer = 0,t=1;
     reverse(ans.begin(),ans.end());
-    int answer = 0;
-    for(int i=0;i<threes.size();++i){
-        answer += threes[i] * ans[i];
+    for(int i=0;i<ans.size();++i){
+        answer += t * ans[i];
+        t *= 3;
     }
     return answer;
 }
