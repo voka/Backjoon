@@ -1,7 +1,7 @@
 class meeting_room():
     def __init__(self, name):
         self.name = name
-        self.time = [9,10,11,12,13,14,15,16,17]
+        self.time = [9,10,11,12,13,14,15,16,17,18]
         self.time_num = 1
         self.available_time = []
     
@@ -16,12 +16,12 @@ class meeting_room():
         for t in range(1,tlen):
             #print(pre,self.time[t])
             if(self.time[t] - pre != 1 or t == tlen-1):
-                if(t == tlen-1) : time_end = self.time[t] + 1
+                if(t == tlen-1 ) : 
+                    if(self.time[t] - pre != 1) :  time_end = pre + 1
+                    else :time_end = self.time[t] 
                 else : time_end = pre + 1
                 if(len(str(time_start)) == 1):
                     time_start = "0" + str(time_start)
-                if(len(str(time_end)) == 1):
-                    time_end = "0" + str(time_end)
                 self.available_time.append([time_start,time_end])
                 time_start = self.time[t]
                 mytime += 1
