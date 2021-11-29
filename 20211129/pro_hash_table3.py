@@ -1,0 +1,22 @@
+def solution(genres, plays):
+    mymusic = {} # genres, "횟수 , 고유번호"
+    musicpopulur = {} # 장르 횟수
+    for i in range(len(genres)):
+        if genres[i] in mymusic:
+            mymusic[genres[i]].append([plays[i],i])
+        else:
+            mymusic[genres[i]] = []
+            mymusic[genres[i]].append([plays[i],i])
+        if genres[i] in musicpopulur:
+            musicpopulur[genres[i]] += plays[i]
+        else:
+            musicpopulur[genres[i]] = plays[i]
+    ss = sorted(musicpopulur.items(), key = lambda item : item[1] ,reverse=True )
+    
+    answer = []
+    for i in ss:
+        mymusic[i[0]].sort(key=lambda x : (x[0],-x[1]), reverse=True)
+        answer.append(mymusic[i[0]][0][1])
+        if(len(mymusic[i[0]]) > 1) : answer.append(mymusic[i[0]][1][1])
+        
+    return answer
