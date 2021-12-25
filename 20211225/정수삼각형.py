@@ -18,6 +18,6 @@ for i in range(1,N):
             up = dp[i-1][cur_N-2]
         else:
             up = max(dp[i-1][j-1],dp[i-1][j])
-        dp[i][j] = max(dp[i][j], cur + up)
+        dp[i][j] =  cur + up
 
 print(max(dp[N-1]))
