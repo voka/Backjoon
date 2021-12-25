@@ -16,7 +16,7 @@ for i in range(1,N):
             up = dp[i-1][j]
         elif j == cur_N-1:
             up = dp[i-1][cur_N-2]
-        else:
+        else: # 요때만 윗층에서 선택할 수 있는 값의 개수가 2가지다. 
             up = max(dp[i-1][j-1],dp[i-1][j])
         dp[i][j] =  cur + up
 
