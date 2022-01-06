@@ -23,3 +23,13 @@ for i in range(n):
     dp_min = temp_min[:]    
 print(max(dp_max), end=" ")
 print(min(dp_min))
+
+"""
+1 2 3
+1 2 3
+1 2 3
+
+1 3 6
+2 6 6 + 6 + 3 -3 =
+3 9 6 + 9 + 3 - 6      
+"""
