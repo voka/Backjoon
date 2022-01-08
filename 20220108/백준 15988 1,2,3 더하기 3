@@ -1,0 +1,18 @@
+from sys import stdin 
+T = int(input())
+answers = []
+for _ in range(T): 
+    answers.append(int(stdin.readline()))
+dp = {}
+dp[0] = 0
+dp[1] = 1
+dp[2] = 2
+dp[3] = 4
+
+max_n = max(answers)
+for i in range(4,max_n+1):
+    dp[i] = (dp[i-1] + dp[i-2] + dp[i-3])%(1000000009)
+    
+for j in answers:
+    print(dp[j])
+    
