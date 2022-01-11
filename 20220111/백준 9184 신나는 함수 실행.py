@@ -1,9 +1,6 @@
 """ 
 
-a or b or c <= 0 -> 1
-1 1 1 => 1 + 1 + 1 - 1 = 2
-1 2 3 => (1,2,2) + 1,
-
+Memorization을 할 수 있는지 묻는 문제 
 """
 from sys import stdin 
 dp = [[[0]*(21) for _ in range(21)] for _ in range(21) ]
