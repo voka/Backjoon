@@ -4,6 +4,9 @@ nums = list(map(int,stdin.readline().split()))
 dp = [0]*(N)
 dp[0] = nums[0]
 answer = -5000
+if max(nums) < 0 :
+    print(max(nums))
+    exit()
 for i in range(1,N):
     dp[i] = max(dp[i-1] + nums[i],nums[i])
     answer = max(answer,dp[i])
