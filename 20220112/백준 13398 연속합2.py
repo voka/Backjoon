@@ -17,5 +17,4 @@ for i in range(1,N):
     
     answer = max(answer,max(dp[i]))
     
-#print(dpr,dpl)
 print(answer)
