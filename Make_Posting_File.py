@@ -12,22 +12,21 @@ problem_nos = {fname:fname.split()[1] for fname in file_names}
 #print(problem_nos)
 md_file_names ={fname:Year+'-'+Month+'-'+Day+'-'+fname.split('.')[0]+'.md' for fname in file_names}
 file_paths = [os.path.join(folder_path,fname) for fname in file_names]
-#print(file_paths,md_file_names)
+print(file_paths,md_file_names)
 
 
 # Gist class
 MyGist = Gist.Gist()
 #Gist 파일 만들어야 할 경우
-MyGist.filepath_list = file_paths
-MyGist.Create()
+#MyGist.filepath_list = file_paths
+#MyGist.Create()
 #
 MyGist.file_names = file_names
 MyGist.make_Scripts_Str()
 
-
 # Md class
 for fname in file_names:
-    md = MD_File.md_file(Dates,md_file_names[fname],problem_nos[fname],MyGist.Gist_scripts[fname])
+    md = MD_File.md_file(Dates,md_file_names[fname],fname.split('.')[0],problem_nos[fname],MyGist.Gist_scripts[fname])
     md.createFolder()
     md.Modify_Contents()
     md.Write_md_file()

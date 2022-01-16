@@ -18,6 +18,7 @@ class Gist():
     def make_Scripts_Str(self):
         self.Gist_scripts = {}
         Gist_list = self.get_All_Gist()
+        #print(Gist_list)
         for i in Gist_list:
             for j in self.file_names:
                 if j in i['files']: # 올린 파일을 찾으면 
