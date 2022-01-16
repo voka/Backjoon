@@ -2,7 +2,7 @@ import gistyc
 
 class Gist():
     def __init__(self):
-        self.AUTH_TOKEN = "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" 
+        self.AUTH_TOKEN = "" 
         self.gist_api = gistyc.GISTyc(auth_token=self.AUTH_TOKEN)
         self.file_names = []
         self.filepath_list = []
