@@ -2,11 +2,12 @@ import gistyc
 
 class Gist():
     def __init__(self):
-        self.AUTH_TOKEN = "" 
+        self.AUTH_TOKEN = "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" 
         self.gist_api = gistyc.GISTyc(auth_token=self.AUTH_TOKEN)
         self.file_names = []
         self.filepath_list = []
         self.response_datas = []
+        self.Gist_scripts = {}
     def Create(self):
         for FILEPATH in self.filepath_list:
             print(FILEPATH)
@@ -16,11 +17,13 @@ class Gist():
     def get_All_Gist(self):
         return self.gist_api.get_gists()
     def make_Scripts_Str(self):
-        self.Gist_scripts = {}
+        if len(self.Gist_scripts) != 0 :
+            return 
+        print(self.Gist_scripts)
         Gist_list = self.get_All_Gist()
-        #print(Gist_list)
+        print(Gist_list)
         for i in Gist_list:
             for j in self.file_names:
                 if j in i['files']: # 올린 파일을 찾으면 
                     print(i['html_url'])
-                    self.Gist_scripts[j] = "<script src={0}></script>".format(i['html_url'] + ".js")
+                    self.Gist_scripts[j] = '<script src="{0}"></script>'.format(i['html_url'] + ".js")
