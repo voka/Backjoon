@@ -5,6 +5,6 @@ categories:
 tags:
   - python
   - Algorithm
-  - Dynamic Programming
+  - Greedy
   - Backjon
 ---
