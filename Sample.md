@@ -6,5 +6,7 @@ tags:
   - python
   - Algorithm
   - Greedy
+  - PriorityQueue
+  - heapq
   - Backjon
 ---

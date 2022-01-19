@@ -18,8 +18,8 @@ print(file_paths,md_file_names)
 # Gist class
 MyGist = Gist.Gist()
 #Gist 파일 만들어야 할 경우
-#MyGist.filepath_list = file_paths
-#MyGist.Create()
+MyGist.filepath_list = file_paths
+MyGist.Create()
 #
 MyGist.file_names = file_names
 MyGist.make_Scripts_Str()
