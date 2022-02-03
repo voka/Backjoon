@@ -1,0 +1,30 @@
+import sys,math,pprint
+
+N,M,Q = map(int,sys.stdin.readline().split())
+times = list(map(int,sys.stdin.readline().split()))
+mini = [(i,times[i]) for i in range(N)]
+mini.sort(key = lambda x : x[1]) #  개가 괴롭히는 시간이 최소가 되는 도시부터 탐색 
+#print(mini)
+
+dp = [[math.inf]*(N) for _ in range(N)]
+max_time = [[math.inf]*N for _ in range(N)]
+for i in range(M):
+    a,b,w = map(int,sys.stdin.readline().split())
+    dp[a-1][b-1] = dp[b-1][a-1] = w # 일반적인 플로이드 와샬 초기화
+    max_time[a-1][b-1] = max_time[b-1][a-1] = w + max(times[a-1],times[b-1]) # dp + 괴롭히는 시간인 최종 값 초기화
+
+for m in range(N):
+    k = mini[m][0]
+    for j in range(N):
+        for i in range(N):
+            if dp[i][j] > dp[i][k] + dp[k][j]: # 이거 일때 최종값, dp값 변경 
+                dp[i][j] = dp[i][k] + dp[k][j]
+                max_time[i][j] = min(max_time[i][j],dp[i][j] + max(times[i],times[j],times[k]))
+#pprint.pprint(dp)
+#pprint.pprint(max_time)
+for i in range(Q):
+    a,b = map(int,sys.stdin.readline().split())
+    if dp[a-1][b-1] == math.inf:
+        print(-1)
+    else:
+        print(max_time[a-1][b-1])
