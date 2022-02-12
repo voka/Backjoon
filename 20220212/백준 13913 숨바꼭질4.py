@@ -20,7 +20,7 @@ paths = deque()
 cur = K
 paths.append(cur)
 #answer -= 1
-while answer:
+while answer: # 백트래킹이다. 
     if cur%2 == 0:
         if check[cur//2] + 1 == check[cur]:
             cur = cur//2
