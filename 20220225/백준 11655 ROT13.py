@@ -1,6 +1,6 @@
 import sys,string
 def process():
-    mystr = list(sys.stdin.readline().strip())
+    mystr = list(sys.stdin.readline())
     lowercases = list(string.ascii_lowercase)
     lowerdict = {}
     numlowdict = {}
