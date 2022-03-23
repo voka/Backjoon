@@ -28,6 +28,7 @@ for i in range(M):
         
 for i in range(1,N+1):
     if i != parent[i]:
+        # parent[i]랑 find_parent(i)랑은 다른 놈일 수 있다!!!!!
         p = find_parent(i)
         candys[p] += candys[i]
         nums[p] += nums[i]
