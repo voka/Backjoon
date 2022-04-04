@@ -7,11 +7,9 @@ m = int(ip())
 dist = [[max_int]*(n+1) for _ in range(n+1)]
 for i in range(1,n+1):
     dist[i][i] = 0
-graph = [[] for _ in range(n+1)]
 for i in range(m):
     a,b,cost = map(int,ip().split())
     if dist[a][b] > cost:
-        graph[a].append((b,cost))
         dist[a][b] = cost
 
 traceij = [[-1]*(n+1) for _ in range(n+1)]
