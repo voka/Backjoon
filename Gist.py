@@ -1,5 +1,5 @@
 import gistyc
-#test
+#test2
 class Gist():
     def __init__(self):
         self.AUTH_TOKEN = "" 
