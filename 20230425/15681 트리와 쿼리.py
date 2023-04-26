@@ -16,8 +16,8 @@ def make_tree(idx):
     for child in grahp[idx]:
         if visited[child] == 1:
             continue
-        make_tree(child)
-        tree[idx] += tree[child]
+        make_tree(child)  # 자식 노드들이 먼저 자기가 root인 트리의 사이즈를 측정
+        tree[idx] += tree[child]  # 그 다음 부모 사이즈에 더하기
 
 
 make_tree(r)
