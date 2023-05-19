@@ -40,20 +40,36 @@ for _ in range(N):
         nodes[b][0] = p
 
 total_count = 0
+right_count = 0
+
+
+def find_end(idx):
+    global right_count, last_idx
+    right_count += 1
+    if nodes[idx][2] == -1:
+        last_idx = idx
+        return
+    find_end(nodes[idx][2])
+
+
+last_idx = find_end(1)
+
+# print(right_count)
 
 
 def gogogo(idx):
-    global total_count
+    global total_count, flag
     if nodes[idx][1] != -1:
         gogogo(nodes[idx][1])
         total_count += 1
+    total_count += 1
     if nodes[idx][2] != -1:
-        total_count += 1
         gogogo(nodes[idx][2])
+        total_count += 1
 
 
 if N == 1:
     print(0)
 else:
     gogogo(1)
-    print(total_count)
+    print(total_count - right_count)
